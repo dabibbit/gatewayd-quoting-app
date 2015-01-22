@@ -2,7 +2,7 @@
 
 // todo: clean this up and modularize with variable file name/path
 // handle secrets. Make npm module for this in the future
-var secrets = require('../../../../../secrets');
+// var secrets = require('../../../../../secrets');
 
 var path = require('path');
 var _ = require('lodash');
@@ -51,13 +51,13 @@ var Quote = Backbone.Model.extend({
     }
   },
 
-  getSecret: function(key) {
-    if (secrets[key]) {
-      return secrets[key];
-    }
+  // getSecret: function(key) {
+  //   if (secrets[key]) {
+  //     return secrets[key];
+  //   }
 
-    return false;
-  },
+  //   return false;
+  // },
 
   // extract base url from bridge quote url to utilize gatewayd endpoint for submitting quote
   buildBridgePaymentsUrl: function(urlWithDomain) {
@@ -73,7 +73,8 @@ var Quote = Backbone.Model.extend({
   },
 
   submitQuote: function(quoteId) {
-    var credentials = this.getSecret('credentials');
+    // var credentials = this.getSecret('credentials');
+    var credentials = '';
 
     if (quoteId !== this.id) {
       return false;

@@ -2,7 +2,7 @@
 
 // todo: clean this up and modularize with variable file name/path
 // handle secrets. Make npm module for this in the future
-var secrets = require('../../../../../secrets');
+// var secrets = require('../../../../../secrets');
 
 var path = require('path');
 var _ = require('lodash');
@@ -17,13 +17,13 @@ Backbone.$ = $;
 var Quotes = Backbone.Collection.extend({
   model: Model,
 
-  getSecret: function(key) {
-    if (secrets[key]) {
-      return secrets[key];
-    }
+  // getSecret: function(key) {
+  //   if (secrets[key]) {
+  //     return secrets[key];
+  //   }
 
-    return false;
-  },
+  //   return false;
+  // },
 
   comparator: function(a, b) {
 
@@ -82,7 +82,8 @@ var Quotes = Backbone.Collection.extend({
   },
 
   fetchQuotes: function() {
-    var credentials = this.getSecret('credentials');
+    // var credentials = this.getSecret('credentials');
+    var credentials = '';
 
     this.fetch({
       contentType: 'application/json',
