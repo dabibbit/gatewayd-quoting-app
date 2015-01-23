@@ -31,7 +31,7 @@ var RippleAddress = Backbone.Model.extend({
     }
 
     //todo get this gateway url from input or config
-    return path.join(appConfig.baseUrl,
+    return path.join(location.origin,
                      '.well-known/webfinger.json?resource=acct:' +
                        encodeURIComponent(this.get('federatedAddress')));
   },
