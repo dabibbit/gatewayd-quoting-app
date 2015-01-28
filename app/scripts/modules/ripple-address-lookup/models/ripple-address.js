@@ -3,6 +3,7 @@
 var path = require('path');
 var _ = require('lodash');
 var $ = require('jquery');
+var appConfig = require('../../../../../app-config.json');
 
 var Backbone = require('backbone');
 var ValidationMixins = require('../../../shared/helpers/validation_mixin');
@@ -10,7 +11,6 @@ var ValidationMixins = require('../../../shared/helpers/validation_mixin');
 var adminDispatcher = require('../../../dispatchers/admin-dispatcher');
 var addressActions = require('../config.json').actions;
 
-var appConfig = require('../../../../../app-config.json');
 
 Backbone.$ = $;
 
@@ -24,6 +24,7 @@ var RippleAddress = Backbone.Model.extend({
   },
 
   url: function() {
+    var baseUrl = appConfig.baseUrl || location.origin;
     var federatedAddress = this.get('federatedAddress') || '';
 
     if (!federatedAddress) {
@@ -31,7 +32,7 @@ var RippleAddress = Backbone.Model.extend({
     }
 
     //todo get this gateway url from input or config
-    return location.origin + ':5000/' + '.well-known/webfinger.json?resource=acct:' +
+    return baseUrl + '/.well-known/webfinger.json?resource=acct:' +
            encodeURIComponent(this.get('federatedAddress'));
   },
 
