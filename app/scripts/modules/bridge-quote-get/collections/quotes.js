@@ -72,8 +72,8 @@ var Quotes = Backbone.Collection.extend({
     // this.url = updatedUrl;
 
     // used when bridge quote base url is similar to http://domain.com
-    this.url = path.join(
-      this.baseUrl,
+    this.url = this.baseUrl + path.join(
+      '/',
       'quotes',
       encodeURIComponent('acct:' + quoteQueryParams.source_address),
       encodeURIComponent('acct:' + quoteQueryParams.destination_address),
